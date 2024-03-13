@@ -20,7 +20,9 @@ from virtuoso import views as vviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',vviews.home),
-    path('about/', vviews.about),
-    path('elevatorpitch/', vviews.elevatorpitch)
+    path('',vviews.home, name='home'),
+    path('about/', vviews.about, name='about'),
+    path('elevatorpitch/', vviews.elevatorpitch, name='elevatorpitch'),
+    path('login/', vviews.login, name='login'),
+    path('signup/', vviews.signup, name='signup'),
 ]

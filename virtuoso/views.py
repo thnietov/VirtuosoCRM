@@ -10,3 +10,9 @@ def about(request):
 
 def elevatorpitch(request):
     return render(request, 'elevatorpitch.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')
