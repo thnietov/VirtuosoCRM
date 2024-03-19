@@ -7,10 +7,9 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">
       {% load static %}
-      <img src="{% static 'images/home.png' %}" alt="" width="30"
-height="24"
+      <img src="{% static 'images/home.png' %}" alt="" width="110"
+height="auto"
           class="d-inline-block align-text-top" />
-      VirtuosoCRM
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,6 +30,42 @@ height="24"
         </li>
       </ul>
     </div>
+    <style>
+      body {
+          transition: background-color 0.75s ease;
+      }
+      .modo-oscuro {
+          background-color: #333;
+          color: #fff;
+      }
+      .modo-claro {
+          background-color: #fff;
+          color: #333;
+      }
+      #imagen-cambiable {
+          cursor: pointer;
+          width: auto;
+          height: 50;
+      }
+  </style>
+  </head>
+  <body class="modo-claro">
+  {% load static %}
+  <img id="imagen-cambiable" src="{% static 'images/dark mode.png' %}" alt="">
+  <script>
+      const body = document.body;
+      const imagenCambiable = document.getElementById('imagen-cambiable');
+      imagenCambiable.addEventListener('click', () => {
+          body.classList.toggle('modo-oscuro');
+          body.classList.toggle('modo-claro');
+          const imagenActual = imagenCambiable.getAttribute('src');
+          if (imagenActual === "{% static 'images/dark mode.png' %}") {
+              imagenCambiable.setAttribute('src', "{% static 'images/light mode.png' %}");
+          } else {
+              imagenCambiable.setAttribute('src', "{% static 'images/dark mode.png' %}");
+          } 
+      });
+  </script>
   </div>
 </nav>
 
