@@ -22,12 +22,24 @@ height="auto"
         <li class="nav-item">
           <a class="nav-link" href="{% url 'elevatorpitch' %}">Elevator pitch</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gestión</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" href="">Hola {{ user.username }}</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cerrar_sesion' %}"> Cerrar sesion </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logear' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Autenticacion' %}">Sign Up</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
     <style>
