@@ -17,12 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from virtuoso import views as vviews
+from cuenta import views as cuentaViews
+from gestion import views as gestionViews
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',vviews.home, name='home'),
     path('about/', vviews.about, name='about'),
     path('elevatorpitch/', vviews.elevatorpitch, name='elevatorpitch'),
-
-    path('autenticacion/', include('autenticacion.urls')),
+    path('registro/', cuentaViews.registro, name="registro"),
+    path('login/', cuentaViews.loginView, name="login"),
+    path('logout/', cuentaViews.logoutView, name="logout"),
+    path('gestion/',gestionViews.gestion, name='gestion'),
+    path('crearCliente/',gestionViews.crearCliente, name='crearCliente'),
 ]

@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'virtuoso',
-    'autenticacion',
-    'crispy_forms',
+    'cuenta',
+    'gestion'
 ]
 
 MIDDLEWARE = [
@@ -77,10 +77,20 @@ WSGI_APPLICATION = 'virtuosoCRM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+AUTH_USER_MODEL = 'cuenta.Cuenta'
+AUTHENTICATION_BACKENDS = ( 
+    'django.contrib.auth.backends.AllowAllUsersModelBackend', 
+    'cuenta.backends.CaseInsensitiveModelBackend',
+    )
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'virtuosodb',
+        'USER': 'postgres',
+        'PASSWORD': 'virtuosodb',
+        'HOST':'localhost',
+        'DATABASE_PORT':'5432',
     }
 }
 
@@ -127,5 +137,3 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-CRISPY_TEMPLATE_PACK='bootstrap4'

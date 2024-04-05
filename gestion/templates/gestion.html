@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <h1>Articles List</h1>
+    <a class="nav-link" href="{% url 'crearCliente' %}">Crear Cliente</a>
+    <div class="articles">
+    {% for cliente in clientes %}
+        <div class="article">
+            <h2><a href="">{{ cliente.nombre }}</a></h2>
+            <p>{{ cliente.emailCliente }}</p>
+            <p>{{ cliente.telefonoCliente }}</p>
+            <p>{{ cliente.creationDate }}</p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
