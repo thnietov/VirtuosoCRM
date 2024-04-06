@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content%}
-    <h1>Articles List</h1>
-    <a class="nav-link" href="{% url 'crearCliente' %}">Crear Cliente</a>
-    <div class="articles">
-    {% for cliente in clientes %}
-        <div class="article">
-            <h2><a href="">{{ cliente.nombre }}</a></h2>
-            <p>{{ cliente.emailCliente }}</p>
-            <p>{{ cliente.telefonoCliente }}</p>
-            <p>{{ cliente.creationDate }}</p>
-        </div>
-    {% endfor %}
+    <h1 class="text-center">LISTADO DE CLIENTES</h1>
+    <button type="button" class="btn" ><a class="link-dark link-offset-2" href="{% url 'crearCliente' %}">Crear Cliente</a></button>
+    <div class="list-group p-3 mb-2 bg-secondary-subtle">
+        {% for cliente in clientes %}
+        <a href="#" class="list-group-item list-group-item-action active p-3 mb-2 bg-dark-subtle text-dark-emphasis" aria-current="true">
+            <div class="d-flex w-100 justify-content-between ">
+                <h5 class="mb-1 text-uppercase">{{ cliente.nombreCliente }}</h5>
+                <small>{{ cliente.creationDate }}</small>
+            </div>
+            <p class="mb-1">{{ cliente.telefonoCliente }}-{{ cliente.emailCliente }}</p>
+            <small>And some small print.</small>
+        </a>
+        {% endfor %}
     </div>
 {% endblock %}

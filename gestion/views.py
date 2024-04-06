@@ -6,7 +6,7 @@ from . import forms
 
 @login_required(login_url="login")
 def gestion(request):
-    clientes = Cliente.objects.all()
+    clientes = Cliente.objects.filter(author_id=request.user.id)
     return render(request, 'gestion.html',{'clientes':clientes})
 
 @login_required(login_url="login")
