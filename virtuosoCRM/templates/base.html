@@ -1,97 +1,120 @@
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"> </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"> </script>
 </head>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">
-      {% load static %}
-      <img src="{% static 'images/home.png' %}" alt="" width="110"
+<div class="container-fluid">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    {% load static %}
+    <img src="{% static 'images/home.png' %}" alt="" width="110"
 height="auto"
-          class="d-inline-block align-text-top" />
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        class="d-inline-block align-text-top" />
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'elevatorpitch' %}">Elevator pitch</a>
+      </li>
+      {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+          <a class="nav-link" href="{% url 'gestion' %}">Gestión</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'elevatorpitch' %}">Elevator pitch</a>
+          <p class="nav-link" href="">Hola {{ user.username }}</p>
         </li>
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gestion' %}">Gestión</a>
-          </li>
-          <li class="nav-item">
-            <p class="nav-link" href="">Hola {{ user.username }}</p>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}"> Log Out </a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'registro' %}">Sign Up</a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-    <style>
-      body {
-          transition: background-color 0.75s ease;
-      }
-      .modo-oscuro {
-          background-color: #333;
-          color: #fff;
-      }
-      .modo-claro {
-          background-color: #fff;
-          color: #333;
-      }
-      #imagen-cambiable {
-          cursor: pointer;
-          width: auto;
-          height: 50;
-      }
-  </style>
-  </head>
-  <body class="modo-claro">
-  {% load static %}
-  <img id="imagen-cambiable" src="{% static 'images/dark mode.png' %}" alt="">
-  <script>
-      const body = document.body;
-      const imagenCambiable = document.getElementById('imagen-cambiable');
-      imagenCambiable.addEventListener('click', () => {
-          body.classList.toggle('modo-oscuro');
-          body.classList.toggle('modo-claro');
-          const imagenActual = imagenCambiable.getAttribute('src');
-          if (imagenActual === "{% static 'images/dark mode.png' %}") {
-              imagenCambiable.setAttribute('src', "{% static 'images/light mode.png' %}");
-          } else {
-              imagenCambiable.setAttribute('src', "{% static 'images/dark mode.png' %}");
-          } 
-      });
-  </script>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}"> Log Out </a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registro' %}">Sign Up</a>
+        </li>
+      {% endif %}
+    </ul>
   </div>
+  <style>
+    body {
+      transition: background-color 0.50s ease;
+    }
+    .modo-oscuro {
+        background-color: #474747;
+        color: #fff;
+    }
+    .modo-claro {
+        background-color: #e3e0d3;
+        color: #333;
+    }
+    .nav-link {
+      color: inherit;
+    }
+    .navbar-brand img {
+      filter: invert(1);
+    }
+    #imagen-cambiable {
+        cursor: pointer;
+        width: auto;
+        height: 50;
+    }
+    .footer {
+      background-color: #e3e0d3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+    .footer.modo-oscuro{
+      background-color: #474747;
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="modo-claro">
+{% load static %}
+<img id="imagen-cambiable" src="{% static 'images/dark mode.png' %}" alt="">
+<footer class="footer" id="myFooter">
+  <p>© 2024 Copyright - José David Toro, Thomas Nieto Valencia, Juan Esteban Martinez</p>
+</footer>
+<script>
+  const body = document.body;
+  const imagenCambiable = document.getElementById('imagen-cambiable');
+  const navbar = document.querySelector('.navbar');
+  var footer = document.getElementById('myFooter');
+
+  imagenCambiable.addEventListener('click', () => {
+      body.classList.toggle('modo-oscuro');
+      body.classList.toggle('modo-claro');
+      footer.classList.toggle('modo-oscuro');
+      footer.classList.toggle('modo-claro');
+      navbar.classList.toggle('modo-oscuro');
+      navbar.classList.toggle('modo-claro');
+
+      const imagenActual = imagenCambiable.getAttribute('src');
+      if (imagenActual === "{% static 'images/dark mode.png' %}") {
+          imagenCambiable.setAttribute('src', "{% static 'images/light mode.png' %}");
+      } else {
+          imagenCambiable.setAttribute('src', "{% static 'images/dark mode.png' %}");
+      }
+  });
+</script>
+</div>
+</body>
 </nav>
 
-<div class="container"> 
-    {% block content %} 
-    {% endblock content %} 
-</div>
 
-<footer class="text-center text-lg-start bg-light text-muted mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="text-center p-4">
-        <h4>© 2024 Copyright - José David Toro, Thomas Nieto Valencia, Juan Esteban Martinez</h4>
-      </div>
-    </div>
-  </div>
-</footer>
+<div class="container"> 
+  {% block content %} 
+  {% endblock content %} 
+</div>
