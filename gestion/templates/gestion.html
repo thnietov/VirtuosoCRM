@@ -5,7 +5,7 @@
     <button type="button" class="btn" ><a class="link-dark link-offset-2" href="{% url 'crearCliente' %}">Crear Cliente</a></button>
     <div class="list-group p-3 mb-2 bg-secondary-subtle">
         {% for cliente in clientes %}
-        <a href="#" class="list-group-item list-group-item-action active p-3 mb-2 bg-dark-subtle text-dark-emphasis" aria-current="true">
+        <a href="{% url 'detalleCliente' cliente.id %}" class="list-group-item list-group-item-action active p-3 mb-2 bg-dark-subtle text-dark-emphasis" aria-current="true">
             <div class="d-flex w-100 justify-content-between ">
                 <h5 class="mb-1 text-uppercase">{{ cliente.nombreCliente }}</h5>
                 <small>{{ cliente.creationDate }}</small>

@@ -22,3 +22,10 @@ def crearCliente(request):
     else:
         form = forms.CreateCliente()
     return render(request, 'crearCliente.html', { 'form': form })
+
+@login_required(login_url="login")
+def detalleCliente(request, id):
+    cliente = Cliente.objects.get(
+        id = id
+    )
+    return render(request,'detalleCliente.html',{'detalle_cliente':cliente})

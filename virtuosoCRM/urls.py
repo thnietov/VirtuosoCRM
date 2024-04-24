@@ -32,4 +32,5 @@ urlpatterns = [
     path('logout/', cuentaViews.logoutView, name="logout"),
     path('gestion/',gestionViews.gestion, name='gestion'),
     path('crearCliente/',gestionViews.crearCliente, name='crearCliente'),
+    path('gestion/<int:id>/',gestionViews.detalleCliente, name='detalleCliente'),
 ]
