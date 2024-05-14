@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'virtuoso',
     'cuenta',
-    'gestion'
+    'gestion',
+    'producto',
+    'venta',
 ]
 
 MIDDLEWARE = [

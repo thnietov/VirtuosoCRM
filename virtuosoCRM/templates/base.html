@@ -24,20 +24,26 @@ height="auto"
       </li>
       {% if user.is_authenticated %}
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'productosServicios' %}">Productos y Servicios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ventas' %}">Ventas</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'gestion' %}">Gestión</a>
         </li>
         <li class="nav-item">
           <p class="nav-link" href="">Hola {{ user.username }}</p>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}"> Log Out </a>
+          <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'registro' %}">Sign Up</a>
+          <a class="nav-link" href="{% url 'registro' %}">Registro</a>
         </li>
       {% endif %}
     </ul>

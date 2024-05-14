@@ -10,8 +10,7 @@ class Cliente(models.Model):
     emailCliente =  models.EmailField(verbose_name="email", max_length=60)
     telefonoCliente = models.CharField(max_length=100, verbose_name = 'Nombre del Cliente', null = True)
     author = models.ForeignKey(Cuenta, default=None, on_delete = models.CASCADE, null= True)
-    idCliente = models.PositiveIntegerField(null = False)
-    # add in author later
+
 
     def __str__(self):
         return self.nombreCliente

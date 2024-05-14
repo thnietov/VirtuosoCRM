@@ -11,7 +11,6 @@ def gestion(request):
 
 @login_required(login_url="login")
 def crearCliente(request):
-    print(request.user.id)
     if request.method == 'POST':
         form = forms.CreateCliente(request.POST)
         if form.is_valid():

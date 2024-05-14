@@ -19,6 +19,8 @@ from django.urls import path, include
 from virtuoso import views as vviews
 from cuenta import views as cuentaViews
 from gestion import views as gestionViews
+from producto import views as productoViews
+from venta import views as ventaViews
 
 
 
@@ -33,4 +35,7 @@ urlpatterns = [
     path('gestion/',gestionViews.gestion, name='gestion'),
     path('crearCliente/',gestionViews.crearCliente, name='crearCliente'),
     path('gestion/<int:id>/',gestionViews.detalleCliente, name='detalleCliente'),
+    path('productosServicios/',productoViews.productosServicios, name='productosServicios'),
+    #path('producto/<int:id>/',productoViews.detalleProducto, name='detalleProducto'),
+    path('ventas/',ventaViews.ventas, name='ventas'),
 ]
