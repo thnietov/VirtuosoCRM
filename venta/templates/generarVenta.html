@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <div class="container">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5">Generar Venta</h1>
+        </div>  
+        <form action="{% url 'agregar_producto' %}" method="POST" enctype="multipart/form-data"> 
+            {% csrf_token %}   
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Producto</label>
+                    <select class="form-select"  name="{{form.producto.name}}" aria-label="Default select example">
+                        <option selected>Choose...</option>
+                        {% for producto in productos %}
+                            <option value="{{producto.id}}">{{producto.nombre}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">Cantidad</label>
+                    <div class="input-group mb-3"> 
+                        <input type="number" class="form-control" name="{{form.cantidad.name}}">
+                    </div>
+                </div>
+                <div class="col">
+                    <label class="form-label"><br></label>
+                    <div class="input-group mb-3"> 
+                        <input type="submit" class="btn btn-light mt-auto" value="Agregar">
+                    </div>
+                </div>                
+            </div>
+        </form>
+        <form action="{% url 'agregar_observaciones_cliente' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Cliente</label>
+                    <select class="form-select" name="{{formC.idCliente.name}}">
+                        <option selected>Choose...</option>
+                        {% for cliente in clientes %}
+                            <option value="{{cliente.id}}">{{cliente.nombreCliente}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">Observaciones</label>                
+                    <textarea class="form-control" aria-label="With textarea" name="{{formC.observacionVenta.name}}"></textarea>
+                </div>
+                <div class="col">
+                    <label class="form-label"><br></label>
+                    <div class="input-group mb-3"> 
+                        <input type="submit" class="btn btn-light mt-auto" value="Agregar">
+                    </div>
+                </div> 
+            </div>
+        </form>
+
+        <div class="row">
+            {% include "carro.html" %}
+        </div>
+    </div>
+{% endblock %}

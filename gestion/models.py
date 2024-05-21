@@ -8,7 +8,7 @@ class Cliente(models.Model):
     idCliente = models.PositiveIntegerField(null = False)
     creationDate = models.DateField(verbose_name="fecha de creacion",auto_now_add=True)
     emailCliente =  models.EmailField(verbose_name="email", max_length=60)
-    telefonoCliente = models.CharField(max_length=100, verbose_name = 'Nombre del Cliente', null = True)
+    telefonoCliente = models.CharField(max_length=100, verbose_name = 'Telefono del Cliente', null = True)
     author = models.ForeignKey(Cuenta, default=None, on_delete = models.CASCADE, null= True)
 
 

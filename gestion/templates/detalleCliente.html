@@ -2,7 +2,7 @@
 
 {% block content %}
 <section style="background-color: #eee;">
-    <!-- Ventana Modal Venta -->
+    {% comment %} <!-- Ventana Modal Venta -->
         <!-- Trigger Modal -->
         <button type="button" class="btn bg-dark-subtle text-dark-emphasis p-2 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Generar Venta
@@ -57,7 +57,7 @@
                   </div>
               </div>
           </div>
-      </div>
+      </div> {% endcomment %}
 
         <!-- Fin Ventana Modal Venta -->
 
@@ -73,7 +73,7 @@
               <p class="text-muted mb-1">Cliente desde: {{ detalle_cliente.creationDate }}</p>
             </div>
           </div>
-         <div class="card mb-4 mb-lg-0">
+          <div class="card mb-4 mb-lg-0">
             <!--  <div class="card-body p-0">
               <ul class="list-group list-group-flush rounded-3">
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -160,6 +160,11 @@
           </div>
         </div>
       </div>
+      <div class = "row">
+        <h3>Ventas por mes</h3>
+        <img src="data:image/png;base64,{{ graphic }}" alt="Movies per year chart">
+      </div>
     </div>
+    
   </section>   
 {% endblock %}

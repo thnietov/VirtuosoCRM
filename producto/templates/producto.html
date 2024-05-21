@@ -22,17 +22,17 @@
                         <div class="mb-3">
                             <div class="mb-3">
                                 <label class="form-label">Nombre del Producto</label>
-                                <input type="text" class="form-control" name="{{form.nombrePS.name}}">
+                                <input type="text" class="form-control" name="{{form.nombre.name}}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Descripción del Producto</label>
-                                <textarea class="form-control" aria-label="With textarea" name="{{form.descripcionPS.name}}"></textarea>
+                                <textarea class="form-control" aria-label="With textarea" name="{{form.descripcion.name}}"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Costo del Producto</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" name="{{form.costoPS.name}}">
+                                    <input type="number" class="form-control" name="{{form.costo.name}}">
                                     <span class="input-group-text">.00</span>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                 <label class="form-label">Precio Unitario del Producto</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" name="{{form.precioUnitarioPS.name}}">
+                                    <input type="number" class="form-control" name="{{form.precioUnitario.name}}">
                                     <span class="input-group-text">.00</span>
                                 </div>
                             </div>
@@ -54,15 +54,22 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label class="form-label">Estado</label>
+                                <select class="form-select" aria-label="Default select example" name="{{form.estado.name}}">
+                                    <option selected>Open this select menu</option>
+                                    <option value="ACTIVO">ACTIVO</option>
+                                    <option value="INACTIVO">INACTIVO</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Observaciones</label>
                                 <textarea class="form-control" aria-label="With textarea" name="{{form.observacion.name}}"></textarea>
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Registrar">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn bg-dark-subtle text-dark-emphasis p-2 m-3" value="Registrar Servicio">
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn bg-dark-subtle text-dark-emphasis p-2 m-3">Save changes</button>
                 </div>
             </div>
         </div>
@@ -73,10 +80,10 @@
         {% for producto in productos %}
         <a href="" class="list-group-item list-group-item-action active p-3 mb-2 bg-dark-subtle text-dark-emphasis" aria-current="true">
             <div class="d-flex w-100 justify-content-between ">
-                <h5 class="mb-1 text-uppercase">{{ producto.nombrePS }}</h5>
+                <h5 class="mb-1 text-uppercase">{{ producto.nombre }}</h5>
                 <small>{{ producto.creationDate }}</small>
             </div>
-            <p class="mb-1">{{ producto.costoPS }}-{{ producto.precioUnitarioPS }}</p>
+            <p class="mb-1">{{ producto.costo }}-{{ producto.precioUnitario }}</p>
             <small>And some small print.</small>
         </a>
         {% endfor %}

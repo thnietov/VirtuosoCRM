@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#kn-h9=6u+3(!q-k@71wg9!n2c@&e4t+f^u@j+f-=l0l)z@g$f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.71.6.182']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'cuenta',
     'gestion',
     'producto',
+    'carro',
     'venta',
 ]
 
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carro.context_processor.importe_total_carro',
             ],
         },
     },
